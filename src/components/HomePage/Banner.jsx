@@ -13,7 +13,7 @@ const Banner = () => {
             }}
             key={index}
             id={`slide${index + 1}`}
-            className="carousel-item relative w-full min-h-[90vh] bg-cover rounded-xl"
+            className="carousel-item relative w-full min-h-[70vh] bg-cover rounded-xl"
           >
             <div className="h-full w-full flex flex-col pl-36 gap-6 justify-center text-white">
               <h1 className="text-5xl font-bold">{banner.title}</h1>
