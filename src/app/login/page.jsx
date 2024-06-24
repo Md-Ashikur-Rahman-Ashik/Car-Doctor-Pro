@@ -1,12 +1,22 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { signIn } from "next-auth/react";
 
 const page = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
+
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    console.log(res);
   };
 
   return (
