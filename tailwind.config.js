@@ -15,4 +15,14 @@ module.exports = {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#FF3811",
+        },
+      },
+      "light",
+    ],
+  },
 };
