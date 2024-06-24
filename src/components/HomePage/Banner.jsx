@@ -3,7 +3,7 @@ import React from "react";
 const Banner = () => {
   return (
     <div className="container mx-auto">
-      <div className="carousel w-full mt-12">
+      <div className="carousel w-full mt-2">
         {banners.map((banner, index) => (
           <div
             style={{
