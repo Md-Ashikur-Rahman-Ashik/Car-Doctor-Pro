@@ -28,7 +28,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-base-100 text-slate-900">
+    <div className="bg-base-100 text-slate-900 mb-10">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <Link href={"/"} className="btn btn-ghost text-xl">
@@ -42,9 +42,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <div className="flex items-center gap-6">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <Link
-                key={item.path}
+                key={index}
                 href={item.path}
                 className="font-semibold hover:text-primary duration-300"
               >
