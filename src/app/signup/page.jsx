@@ -6,7 +6,14 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const page = () => {
   const handleSignUp = async (event) => {
-    event.preventDefault;
+    event.preventDefault();
+
+    const newUser = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    console.log(newUser);
   };
 
   return (
