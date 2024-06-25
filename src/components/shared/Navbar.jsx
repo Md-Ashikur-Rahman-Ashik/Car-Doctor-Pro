@@ -38,9 +38,10 @@ const Navbar = () => {
         <div className="navbar-start">
           <Link href={"/"} className="btn btn-ghost text-xl">
             <Image
+              className="w-full h-[60px]"
               src={"/assets/logo.svg"}
-              height={60}
-              width={100}
+              height={0}
+              width={0}
               alt="Logo"
             ></Image>
           </Link>
