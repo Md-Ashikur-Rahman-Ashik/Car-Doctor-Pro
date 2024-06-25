@@ -17,7 +17,27 @@ const Page = ({ params }) => {
 
   const handleBooking = async (event) => {
     event.preventDefault();
+
+    const newBooking = {
+      email: data?.user?.email,
+      name: data?.user?.name,
+      address: event.target.address.value,
+      phone: event.target.phone.value,
+      date: event.target.date.value,
+      ...service,
+    };
+
+    const res = await fetch("http://localhost:3000/checkout/api/new-booking", {
+      method: "POST",
+      body: JSON.stringify(newBooking),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    console.log(res);
   };
+
+  //   console.log(new Date().getDay());
 
   useEffect(() => {
     loadService();
