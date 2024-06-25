@@ -3,6 +3,7 @@ import { getServicesDetails } from "@/services/getServices";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Page = ({ params }) => {
   const { data } = useSession();
@@ -34,7 +35,9 @@ const Page = ({ params }) => {
         "content-type": "application/json",
       },
     });
-    console.log(res);
+    const response = await res?.json();
+    toast.success(response?.message);
+    event.target.reset();
   };
 
   //   console.log(new Date().getDay());
