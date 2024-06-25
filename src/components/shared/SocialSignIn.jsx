@@ -1,18 +1,22 @@
 "use client";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SocialSignIn = () => {
   const router = useRouter();
+  const session = useSession();
   const handleSocialLogin = async (provider) => {
-    const res = await signIn(provider);
-    console.log(res)
-    if (res.status == -"authenticated") {
-      router.push("/");
-    }
+    const res = await signIn(provider, { redirect: false });
+    // console.log(res)
+    // if (res.status == -"authenticated") {
+    //   router.push("/");
+    // }
   };
+  if(session.status === "authenticated"){
+    router.push("/")
+  }
 
   return (
     <div className="flex justify-center gap-4">
