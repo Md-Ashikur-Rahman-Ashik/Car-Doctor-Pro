@@ -1,4 +1,5 @@
 "use client";
+import SocialSignIn from "@/components/shared/SocialSignIn";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -76,14 +77,7 @@ const page = () => {
           </form>
           <div>
             <h6 className="my-6 flex justify-center">or sign up with</h6>
-            <div className="flex justify-center gap-4">
-              <button className="btn px-6 text-primary">
-                <FaGoogle />
-              </button>
-              <button className="btn px-6 text-primary">
-                <FaGithub />
-              </button>
-            </div>
+            <SocialSignIn></SocialSignIn>
             <h6 className="my-6 flex justify-center gap-2">
               Already have an account?{" "}
               <Link href={"/login"} className="text-primary font-semibold">

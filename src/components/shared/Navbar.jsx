@@ -62,6 +62,17 @@ const Navbar = () => {
           <IoCartOutline className="text-xl" />
           <IoSearchSharp className="text-xl" />
           <a className="btn btn-outline btn-primary">Appointment</a>
+          <div>
+            {session.data?.user && (
+              <Image
+                alt={session?.data?.user?.name}
+                src={session?.data?.user?.image}
+                height={40}
+                width={40}
+                className="rounded-full"
+              ></Image>
+            )}
+          </div>
           {!session.data ? (
             <Link href={"/login"} className="btn btn-primary">
               Login

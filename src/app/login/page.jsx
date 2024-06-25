@@ -2,9 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import SocialSignIn from "@/components/shared/SocialSignIn";
 
 const Page = () => {
   const router = useRouter();
@@ -64,14 +64,7 @@ const Page = () => {
           </form>
           <div>
             <h6 className="my-6 flex justify-center">or sign in with</h6>
-            <div className="flex justify-center gap-4">
-              <button className="btn px-6 text-primary">
-                <FaGoogle />
-              </button>
-              <button className="btn px-6 text-primary">
-                <FaGithub />
-              </button>
-            </div>
+            <SocialSignIn></SocialSignIn>
             <h6 className="my-6 flex justify-center gap-2">
               New Here?{" "}
               <Link href={"/signup"} className="text-primary font-semibold">
