@@ -1,3 +1,5 @@
+"use client";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -26,6 +28,9 @@ const Navbar = () => {
       path: "/",
     },
   ];
+
+  const session = useSession();
+  // console.log(session);
 
   return (
     <div className="bg-base-100 text-slate-900 mb-10">
@@ -57,9 +62,15 @@ const Navbar = () => {
           <IoCartOutline className="text-xl" />
           <IoSearchSharp className="text-xl" />
           <a className="btn btn-outline btn-primary">Appointment</a>
-          <Link href={"/login"} className="btn btn-primary">
-            Login
-          </Link>
+          {!session.data ? (
+            <Link href={"/login"} className="btn btn-primary">
+              Login
+            </Link>
+          ) : (
+            <button onClick={() => signOut()} className="btn btn-primary">
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </div>

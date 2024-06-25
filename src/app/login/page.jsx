@@ -4,8 +4,10 @@ import Link from "next/link";
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
+  const router = useRouter();
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -17,6 +19,9 @@ const page = () => {
       redirect: false,
     });
     console.log(res);
+    if (res.status === 200) {
+      router.push("/");
+    }
   };
 
   return (
@@ -80,4 +85,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
