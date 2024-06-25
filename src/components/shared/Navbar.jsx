@@ -79,7 +79,10 @@ const Navbar = () => {
               Login
             </Link>
           ) : (
-            <button onClick={() => signOut()} className="btn btn-primary">
+            <button
+              onClick={() => signOut()}
+              className="btn btn-primary btn-outline"
+            >
               Logout
             </button>
           )}
