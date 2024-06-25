@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-const page = () => {
+const Page = () => {
   const session = useSession();
   const [bookings, setBookings] = useState([]);
   const loadData = async () => {
@@ -12,6 +12,20 @@ const page = () => {
     );
     const data = await res.json();
     setBookings(data?.myBookings);
+  };
+
+  const handleDelete = async (id) => {
+    const deleted = await fetch(
+      `http://localhost:3000/my-bookings/api/delete-booking/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    // console.log(deleted);
+    const res = await deleted.json();
+    if (res?.response?.deletedCount > 0) {
+      loadData();
+    }
   };
 
   useEffect(() => {
@@ -57,7 +71,12 @@ const page = () => {
                   <td>{date}</td>
                   <td className="flex items-center gap-3">
                     <button className="btn btn-primary">Edit</button>
-                    <button className="btn btn-error">Delete</button>
+                    <button
+                      onClick={() => handleDelete(_id)}
+                      className="btn btn-error"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -69,4 +88,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
