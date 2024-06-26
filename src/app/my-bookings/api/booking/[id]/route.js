@@ -17,7 +17,7 @@ export const DELETE = async (request, { params }) => {
 export const PATCH = async (request, { params }) => {
   const db = await connectDB();
   const bookingsCollection = db.collection("bookings");
-  const { date, phone, address } = await request.json();
+  const updatedDoc = await request.json();
   try {
     const res = await bookingsCollection.updateOne(
       {
@@ -25,9 +25,7 @@ export const PATCH = async (request, { params }) => {
       },
       {
         $set: {
-          date,
-          phone,
-          address,
+          ...updatedDoc,
         },
       },
       {
@@ -49,7 +47,7 @@ export const GET = async (request, { params }) => {
       _id: params.id,
     });
     // console.log(res);
-    return Response.json({ message: "Booking found", response: res });
+    return Response.json({ message: "Booking found", data: res });
   } catch (error) {
     return Response.json({ message: "Something went wrong" });
   }
