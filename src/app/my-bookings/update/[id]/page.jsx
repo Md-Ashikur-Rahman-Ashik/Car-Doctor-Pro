@@ -9,7 +9,7 @@ const Page = ({ params }) => {
   const [booking, setBooking] = useState([]);
   const loadBooking = async () => {
     const bookingDetail = await fetch(
-      `http://localhost:3000/my-bookings/api/booking/${params.id}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}/my-bookings/api/booking/${params.id}`
     );
     const data = await bookingDetail.json();
     setBooking(data.data);
@@ -24,7 +24,7 @@ const Page = ({ params }) => {
       address: event.target.address.value,
     };
     const res = await fetch(
-      `http://localhost:3000/my-bookings/api/booking/${params.id}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/my-bookings/api/booking/${params.id}`,
       {
         method: "PATCH",
         body: JSON.stringify(updatedBooking),

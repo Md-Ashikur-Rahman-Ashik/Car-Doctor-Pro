@@ -1,18 +1,15 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SocialSignIn = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const red = searchParams.get("redirect");
   const session = useSession();
   const handleSocialLogin = async (provider) => {
     const res = await signIn(provider, {
-      redirect: true,
-      callbackUrl: red ? red : "/",
+      redirect: false,
     });
     // console.log(res)
     // if (res.status == -"authenticated") {

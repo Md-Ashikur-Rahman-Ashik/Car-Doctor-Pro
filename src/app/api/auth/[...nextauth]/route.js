@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/connectDB";
 import NextAuth from "next-auth/next";
+import { NextResponse } from "next/server";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
@@ -61,7 +62,8 @@ const handler = NextAuth({
             return user;
           }
         } catch (error) {
-          console.log(error);
+          // console.log(error);
+          return NextResponse.json({ message: "Something went wrong", error });
         }
       } else {
         return user;

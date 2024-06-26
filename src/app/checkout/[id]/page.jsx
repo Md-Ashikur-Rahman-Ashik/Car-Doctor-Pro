@@ -28,13 +28,16 @@ const Page = ({ params }) => {
       ...service,
     };
 
-    const res = await fetch("http://localhost:3000/checkout/api/new-booking", {
-      method: "POST",
-      body: JSON.stringify(newBooking),
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/api/new-booking`,
+      {
+        method: "POST",
+        body: JSON.stringify(newBooking),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
     const response = await res?.json();
     toast.success(response?.message);
     event.target.reset();

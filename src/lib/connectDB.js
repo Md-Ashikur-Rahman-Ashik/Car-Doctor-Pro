@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import { NextResponse } from "next/server";
 
 let db;
 
@@ -18,6 +19,7 @@ export const connectDB = async () => {
     db = client.db("doctorDB");
     return db;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
+    return NextResponse.json({ message: "Something went wrong", error });
   }
 };
